@@ -7,6 +7,24 @@ const store = {
   race_id: undefined,
 };
 
+// Custom mapping for track and racer names
+const ctrRacerName = {
+  "Racer 1": "Crash Bandicoot",
+  "Racer 2": "Dr. Neo Cortex",
+  "Racer 3": "Tiny Tiger",
+  "Racer 4": "Dingodile",
+  "Racer 5": "Ripper Roo",
+};
+
+const ctrTrackName = {
+  "Track 1": "Crash Cove",
+  "Track 2": "Skull Rock",
+  "Track 3": "Tiger Temple",
+  "Track 4": "Slide Coliseum",
+  "Track 5": "Cortex Castle",
+  "Track 6": "Nitro Court",
+};
+
 // We need our javascript to wait until the DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
   onPageLoad();
@@ -199,25 +217,6 @@ function handleAccelerate() {
   );
 }
 
-// Custom mapping for track and racer names ------------------
-
-const ctrRacerName = {
-  "Racer 1": "Crash Bandicoot",
-  "Racer 2": "Dr. Neo Cortex",
-  "Racer 3": "Tiny Tiger",
-  "Racer 4": "Dingodile",
-  "Racer 5": "Ripper Roo",
-};
-
-const ctrTrackName = {
-  "Track 1": "Crash Cove",
-  "Track 2": "Skull Rock",
-  "Track 3": "Tiger Temple",
-  "Track 4": "Slide Coliseum",
-  "Track 5": "Cortex Castle",
-  "Track 6": "Nitro Court",
-};
-
 // HTML VIEWS ------------------------------------------------
 // Provided code - do not remove
 
@@ -319,7 +318,7 @@ function resultsView(positions) {
 }
 
 function raceProgress(positions) {
-  const userPlayer = positions.find((e) => e.id === store.player_id);
+  const userPlayer = positions.find((e) => e.id === parseInt(store.player_id));
   userPlayer.driver_name += " (you)";
 
   positions = positions.sort((a, b) => (a.segment > b.segment ? -1 : 1));
@@ -339,7 +338,7 @@ function raceProgress(positions) {
 		<main>
 			<h3>Leaderboard</h3>
 			<section id="leaderBoard">
-				${results}
+				${results.join("")}
 			</section>
 		</main>
 	`;
