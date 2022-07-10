@@ -79,9 +79,13 @@ async function handleCreateRace() {
     // Get player_id and track_id from the store
     const { player_id, track_id } = store;
 
-    if (!track_id) alert("Please select a track");
-    else if (!player_id) alert("Please select your racer");
-    else {
+    if (!track_id) {
+      alert("Please select a track");
+      return;
+    } else if (!player_id) {
+      alert("Please select your racer");
+      return;
+    } else {
       // invoke the API call to create the race, then save the result
       const race = await createRace(player_id, track_id);
 
@@ -195,6 +199,25 @@ function handleAccelerate() {
   );
 }
 
+// Custom mapping for track and racer names ------------------
+
+const ctrRacerName = {
+  "Racer 1": "Crash Bandicoot",
+  "Racer 2": "Dr. Neo Cortex",
+  "Racer 3": "Tiny Tiger",
+  "Racer 4": "Dingodile",
+  "Racer 5": "Ripper Roo",
+};
+
+const ctrTrackName = {
+  "Track 1": "Crash Cove",
+  "Track 2": "Skull Rock",
+  "Track 3": "Tiger Temple",
+  "Track 4": "Slide Coliseum",
+  "Track 5": "Cortex Castle",
+  "Track 6": "Nitro Court",
+};
+
 // HTML VIEWS ------------------------------------------------
 // Provided code - do not remove
 
@@ -219,7 +242,7 @@ function renderRacerCard(racer) {
 
   return `
 		<li class="card podracer" id="${id}">
-			<h3>${driver_name}</h3>
+			<h3>${ctrRacerName[driver_name]}</h3>
 			<p>Top speed: <strong>${top_speed}</strong></p>
 			<p>Acceleration: <strong>${acceleration}</strong></p>
 			<p>Handling: <strong>${handling}</strong></p>
@@ -248,7 +271,7 @@ function renderTrackCard(track) {
 
   return `
 		<li id="${id}" class="card track">
-			<h3>${name}</h3>
+			<h3>${ctrTrackName[name]}</h3>
 		</li>
 	`;
 }
@@ -261,9 +284,10 @@ function renderCountdown(count) {
 }
 
 function renderRaceStartView(track, racers) {
+  const { name } = track;
   return `
 		<header>
-			<h1>Race: ${track.name}</h1>
+			<h1>Race: ${ctrTrackName[name]}</h1>
 		</header>
 		<main id="two-columns">
 			<section id="leaderBoard">

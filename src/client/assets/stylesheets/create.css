@@ -3,13 +3,11 @@
 /* -------------------  MOBILE  --------------------- */
 
 header {
-  background-image: url('https://via.placeholder.com/1150');
+  background-image: url("../images/ctr-1150.png");
 }
-
 
 /* -------------------  TABLET  --------------------- */
 @media (min-width: 768px) {
-
 }
 
 /* -------------------  DESKTOP  -------------------- */

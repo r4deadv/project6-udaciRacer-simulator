@@ -9,7 +9,7 @@
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   border: 0;
 }
 
@@ -21,7 +21,7 @@ body {
 }
 
 header {
-  background-image: url('https://via.placeholder.com/1150');
+  background-image: url("../images/ctr-1150.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -33,13 +33,13 @@ header {
 
 h1 {
   color: white;
-  text-shadow: 3px 2px hsl(0, 2%, 51%);
+  text-shadow: 5px 2px hsl(0, 2%, 16%);
   font-size: 70px;
   text-transform: uppercase;
 }
 
 h2 {
-  color: black;
+  color: rgb(42, 38, 38);
   font-weight: bold;
   font-size: 30px;
   line-height: 1.3;
